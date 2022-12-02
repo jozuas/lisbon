@@ -6,7 +6,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
 
-SQLALCHEMY_DATABASE_URL = f"postgresql://{os.getenv('USER', 'postgres')}@postgresserver/db"
+SQLALCHEMY_DATABASE_URL = f"postgresql://{os.getenv('USER', 'postgres')}@postgresserver/lisbon_dev"
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
