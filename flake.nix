@@ -58,6 +58,7 @@
             python310Packages.fastapi
             python310Packages.uvicorn
             python310Packages.sqlalchemy
+            python310Packages.psycopg2
 
             python310Packages.flake8
             nodePackages.pyright

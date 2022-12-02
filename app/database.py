@@ -6,11 +6,9 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
 
-SQLALCHEMY_DATABASE_URL = f"postgresql://{os.getenv('USER', 'postgres')}@postgresserver/lisbon_dev"
+SQLALCHEMY_DATABASE_URL = f"postgresql://{os.getenv('USER', 'postgres')}@localhost/lisbon_dev"
 
-engine = create_engine(
-    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
-)
+engine = create_engine(SQLALCHEMY_DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
@@ -25,6 +23,8 @@ class Message(Base):
 class MessageSchema(pydantic.BaseModel):
     message: str
 
+    class Config:
+        orm_mode = True
 
 def create_message(db: Session, message: str):
     msg = Message(message=message)

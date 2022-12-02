@@ -5,6 +5,7 @@ from sqlalchemy.orm import Session
 
 from app import database
 
+database.Base.metadata.create_all(bind=database.engine)
 app = FastAPI()
 
 # Dependency
